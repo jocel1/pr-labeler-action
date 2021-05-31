@@ -27,7 +27,7 @@ async function action(context: Pick<Context, 'payload'> = github.context) {
       )
     }
 
-    const ref: string = context.payload.pull_request.head.ref
+    const ref: string = context.payload.pull_request.base.ref
     const config = await getConfig(octokit, configPath, repoInfo, ref, defaultConfig)
 
     const labelsToAdd = Object.entries(config).reduce(

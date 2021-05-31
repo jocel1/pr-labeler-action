@@ -15190,7 +15190,7 @@ function action(context = github.context) {
             if (!context.payload.pull_request) {
                 throw new Error("Payload doesn't contain `pull_request`. Make sure this Action is being triggered by a pull_request event (https://help.github.com/en/articles/events-that-trigger-workflows#pull-request-event-pull_request).");
             }
-            const ref = context.payload.pull_request.head.ref;
+            const ref = context.payload.pull_request.base.ref;
             const config = yield config_1.default(octokit, configPath, repoInfo, ref, defaultConfig);
             const labelsToAdd = Object.entries(config).reduce((labels, [label, patterns]) => {
                 if (Array.isArray(patterns)
